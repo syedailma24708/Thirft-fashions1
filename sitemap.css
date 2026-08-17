@@ -1,0 +1,445 @@
+:root {
+
+    --dark-brown: #4A2C20;
+    --medium-brown: #8B5E3C;
+    --warm-beige: #F3E5D0;
+    --soft-beige: #E8D2B5;
+    --cream: #FFFAF3;
+    --border-brown: #DDC6AA;
+
+}
+
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+
+    background: var(--warm-beige);
+    color: var(--dark-brown);
+    font-family: Arial, sans-serif;
+
+}
+
+.sitemap-section {
+
+    min-height: 100vh;
+    padding: 80px 40px;
+    background: var(--warm-beige);
+
+}
+
+.sitemap-container {
+
+    max-width: 1250px;
+    margin: auto;
+
+}
+
+.sitemap-header {
+
+    text-align: center;
+    margin-bottom: 70px;
+
+}
+
+.sitemap-header span {
+
+    display: block;
+    color: var(--medium-brown);
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+
+}
+
+.sitemap-header h1 {
+
+    font-family: Georgia, serif;
+    color: var(--dark-brown);
+    font-size: 44px;
+    margin-bottom: 12px;
+
+}
+
+.sitemap-header p {
+
+    color: var(--medium-brown);
+    font-size: 16px;
+
+}
+
+.tree {
+
+    position: relative;
+
+}
+
+.root-node {
+
+    width: 300px;
+    margin: auto;
+    padding: 22px 25px;
+    text-align: center;
+    background: var(--dark-brown);
+    color: var(--cream);
+    border-radius: 14px;
+    font-family: Georgia, serif;
+    font-size: 25px;
+    font-weight: bold;
+    box-shadow:
+        0 12px 30px rgba(74, 44, 32, 0.18);
+
+}
+
+.root-node small {
+
+    display: block;
+    margin-top: 7px;
+    color: var(--soft-beige);
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+
+}
+
+.main-branch {
+
+    width: 2px;
+    height: 55px;
+    background: var(--medium-brown);
+    margin: auto;
+    position: relative;
+
+}
+
+.main-branch::after {
+
+    content: "";
+    position: absolute;
+    top: 55px;
+    left: -500px;
+    width: 1000px;
+    height: 2px;
+    background: var(--medium-brown);
+
+}
+
+.main-pages {
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-top: 55px;
+    position: relative;
+
+}
+
+.page-branch {
+
+    position: relative;
+    text-align: center;
+
+}
+
+.page-node {
+
+    min-height: 100px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+    text-decoration: none;
+    background: var(--cream);
+    border: 1px solid var(--border-brown);
+    border-radius: 14px;
+    color: var(--dark-brown);
+    box-shadow:
+        0 8px 20px rgba(74, 44, 32, 0.08);
+    transition: 0.3s ease;
+
+}
+
+.page-node:hover {
+
+    transform: translateY(-6px);
+    background: var(--soft-beige);
+    border-color: var(--medium-brown);
+
+}
+
+.page-node h2 {
+
+    font-family: Georgia, serif;
+    font-size: 22px;
+    margin-bottom: 5px;
+
+}
+
+.page-node p {
+
+    color: var(--medium-brown);
+    font-size: 13px;
+
+}
+
+.node-icon {
+
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--soft-beige);
+    color: var(--dark-brown);
+    font-size: 22px;
+
+}
+
+.sub-branch {
+
+    width: 2px;
+    height: 30px;
+    background: var(--medium-brown);
+    margin: auto;
+
+}
+
+.children {
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+}
+
+.child-node {
+
+    display: block;
+    padding: 16px 18px;
+    text-align: left;
+    text-decoration: none;
+    background: var(--cream);
+    border: 1px solid var(--border-brown);
+    border-left: 4px solid var(--medium-brown);
+    border-radius: 10px;
+    color: var(--dark-brown);
+    transition: 0.3s ease;
+
+}
+
+.child-node:hover {
+
+    background: var(--soft-beige);
+    border-left-color: var(--dark-brown);
+    transform: translateX(5px);
+
+}
+
+.child-node strong {
+
+    display: block;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    margin-bottom: 5px;
+
+}
+
+.child-node small {
+
+    display: block;
+    color: var(--medium-brown);
+    font-size: 12px;
+
+}
+
+.page-branch:nth-child(2) {
+
+    position: relative;
+
+}
+
+.page-branch:nth-child(2) .children {
+
+    border-left: 2px solid var(--border-brown);
+    padding-left: 15px;
+
+}
+
+.child-node:hover strong {
+
+    color: var(--dark-brown);
+
+}
+
+::-webkit-scrollbar {
+
+    width: 8px;
+
+}
+
+::-webkit-scrollbar-track {
+
+    background: var(--warm-beige);
+
+}
+
+::-webkit-scrollbar-thumb {
+
+    background: var(--medium-brown);
+    border-radius: 10px;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+    background: var(--dark-brown);
+
+}
+
+@media (max-width: 900px) {
+
+    .sitemap-container {
+
+        width: 95%;
+        padding: 30px 20px;
+
+    }
+
+    .sitemap-tree {
+
+        transform: scale(0.95);
+        transform-origin: top center;
+
+    }
+
+    .sitemap-box {
+
+        padding: 12px 18px;
+        font-size: 14px;
+
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .sitemap-container {
+
+        width: 92%;
+        padding: 25px 12px;
+        overflow-x: hidden;
+
+    }
+
+    .sitemap-tree {
+
+        transform: none;
+        width: 100%;
+
+    }
+
+    .root-box {
+
+        width: 85%;
+        margin: auto;
+        font-size: 18px;
+
+    }
+
+    .main-branches {
+
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+
+    }
+
+    .branch {
+
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .sitemap-box {
+
+        width: 85%;
+        max-width: 300px;
+        box-sizing: border-box;
+        text-align: center;
+        padding: 12px 15px;
+        font-size: 14px;
+
+    }
+
+    .sub-branch {
+
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+
+    }
+
+    .sub-items {
+
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+
+    }
+
+    .connector,
+    .horizontal-line {
+
+        display: none;
+
+    }
+
+    .vertical-line {
+
+        height: 25px;
+        width: 2px;
+        margin: auto;
+
+    }
+
+}
+
+@media (max-width: 400px) {
+
+    .sitemap-container {
+
+        width: 94%;
+        padding: 20px 8px;
+
+    }
+
+    .root-box {
+
+        width: 90%;
+        font-size: 16px;
+
+    }
+
+    .sitemap-box {
+
+        width: 92%;
+        font-size: 13px;
+        padding: 10px 12px;
+
+    }
+
+}

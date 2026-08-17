@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Thriftly | Sustainable Fashion</title>
+    <!-- bootstrap css link -->
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/bootstrap-5.3.8-dist/css/bootstrap.min.css">
+    <!-- bootstrap icon link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- stylecss link -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- //leaflet link -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+
+<body>
+
+    <div class="preloader" id="preloader">
+        <div class="loader-logo">Thriftly<span>.</span></div>
+        <div class="loader-line"></div>
+    </div>
+
+    <div class="announcement-bar">
+        <div class="announcement-track">
+            <span>✦ FREE SHIPPING ON ORDERS OVER RS. 3000</span>
+            <span>✦ NEW THRIFT DROPS EVERY FRIDAY</span>
+            <span>✦ SUSTAINABLE STYLE, BETTER STORIES</span>
+            <span>✦ FREE SHIPPING ON ORDERS OVER RS. 3000</span>
+            <span>✦ NEW THRIFT DROPS EVERY FRIDAY</span>
+            <span>✦ SUSTAINABLE STYLE, BETTER STORIES</span>
+        </div>
+    </div>
+
+    <header class="navbar" id="main-navbar">
+        <div class="logo">Thriftly</div>
+
+
+
+        <nav class="nav-links" id="nav-links">
+            <a href="#home">Home</a>
+            <a href="#shop">Shop</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-right">
+            <div class="nav-search search box">
+                <button id="search-icon" class="icon-btn" type="button">
+                    <i class="bi bi-search"></i>
+                </button>
+
+                <div class="category-menu" id="category-menu">
+                    <button onclick="showCategory('Bags')">Bags</button>
+                    <button onclick="showCategory('Jeans')">Jeans</button>
+                    <button onclick="showCategory('Tops')">Tops</button>
+                    <button onclick="showCategory('Skirts')">Skirts</button>
+                    <button onclick="showCategory('Hoodies')">Hoodies</button>
+                    <button onclick="showCategory('Jackets')">Jackets</button>
+                    <button onclick="showCategory('Dresses')">Dresses</button>
+                    <button onclick="showCategory('T-Shirts')">T-Shirts</button>
+                    <button onclick="showCategory('Shoes')">Shoes</button>
+                    <button onclick="showCategory('Trousers')">Trousers</button>
+                    <button onclick="showCategory('Shirts')">Shirts</button>
+                    <button onclick="showCategory('Sweaters')">Sweaters</button>
+                </div>
+            </div>
+
+            <a href="cart.html" class="icon-btn cart-icon">
+                <i class="bi bi-cart3"></i>
+                <span id="cart-count">0</span>
+
+
+            </a>
+
+
+
+
+        </div>
+
+        <button class="menu-btn" id="menu-btn" type="button">☰</button>
+
+
+
+
+
+    </header>
+
+
+    <main>
+
+        <section class="hero" id="home">
+            <div class="hero-slider">
+                <img src="images/hero 1.jpg" alt="Thrift fashion model">
+                <img src="images/hero 2.jpg" alt="Thrift fashion model">
+                <img src="images/hero3.jpg" alt="Thrift fashion model">
+            </div>
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+                <p class="hero-tag">Fashion with a second story</p>
+                <h1>Thrift Fashion <span>Style That Deserves a Second Life.</span></h1>
+                <p class="hero-description">Discover unique pre-loved clothes that are stylish, affordable and better
+                    for the planet.</p>
+                <a href="#shop" class="shop-btn">Shop Now</a>
+            </div>
+        </section>
+
+        <div class="fashion-marquee">
+            <div class="fashion-marquee-track">
+                <span>VINTAGE</span><i>✦</i>
+                <span>CONSCIOUS</span><i>✦</i>
+                <span>TIMELESS</span><i>✦</i>
+                <span>FASHION</span><i>✦</i>
+                <span>VINTAGE</span><i>✦</i>
+                <span>CONSCIOUS</span><i>✦</i>
+                <span>TIMELESS</span><i>✦</i>
+                <span>FASHION</span><i>✦</i>
+            </div>
+        </div>
+
+        <section class="featured-section">
+            <div class="section-heading">
+                <p class="small-heading">Featured Collection</p>
+                <h2>Featured Picks</h2>
+                <p>Some of our favourite pre-loved pieces.</p>
+            </div>
+            <div class="product-grid" id="featured-products"></div>
+        </section>
+
+        <section class="shop-section" id="shop">
+            <div class="section-heading">
+                <p class="small-heading">Our Collection</p>
+                <h2>Shop Thrift Fashion</h2>
+                <p>Find something unique for your wardrobe.</p>
+            </div>
+
+            <div class="search-container search box">
+                <input type="text" id="search-input" placeholder="Search for jackets, dresses, jeans...">
+            </div>
+
+            <div class="product-grid" id="product-list"></div>
+            <p class="no-products" id="no-products">No products found.</p>
+        </section>
+
+        <div class="details-modal" id="details-modal">
+            <div class="details-box">
+                <button class="close-details" id="close-details" type="button">×</button>
+                <div class="details-image">
+                    <img id="details-image" src="" alt="">
+                </div>
+                <div class="details-info">
+                    <p class="product-category" id="details-category"></p>
+                    <h2 id="details-name"></h2>
+                    <p class="details-price" id="details-price"></p>
+                    <div class="details-data">
+                        <p>Size: <span id="details-size"></span></p>
+                        <p>Condition: <span id="details-condition"></span></p>
+                    </div>
+
+                    <button class="modal-cart-btn" id="details-cart" type="button">Add to Cart</button>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+
+
+    <!-- About Us Section -->
+    <section class="about-section" id="about">
+
+        <div class="about-container">
+
+            <!-- LEFT IMAGE -->
+            <div class="about-image">
+
+                <img src="images/about us.avif" alt="Thrift Fashion Store">
+
+            </div>
+
+
+            <!-- RIGHT CONTENT -->
+            <div class="about-content">
+
+                <h2>About Us</h2>
+
+                <p>
+                    Welcome to Thrift Fashion Store, where fashion meets
+                    affordability and sustainability. We offer carefully
+                    selected second-hand clothing that is stylish, affordable,
+                    and in good condition.
+                </p>
+
+                <p>
+                    Our aim is to give pre-loved clothes a second life while
+                    helping customers discover unique fashion pieces. By
+                    choosing thrift fashion, you can enjoy great styles while
+                    supporting reuse and reducing clothing waste.
+                </p>
+
+
+                <!-- FEATURE CARDS -->
+                <div class="about-features">
+
+                    <!-- QUALITY -->
+                    <div class="feature-card">
+
+                        <div class="feature-icon">✓</div>
+
+                        <h3>Quality Checked</h3>
+
+                        <p>
+                            Every item is carefully inspected for fabric,
+                            stitching, stains, and overall wear before it
+                            is listed.
+                        </p>
+
+                    </div>
+
+
+                    <!-- AFFORDABLE -->
+                    <div class="feature-card">
+
+                        <div class="feature-icon">🏷</div>
+
+                        <h3>Affordable Prices</h3>
+
+                        <p>
+                            We keep our prices reasonable according to the
+                            item's condition, quality, and style.
+                        </p>
+
+                    </div>
+
+
+                    <!-- SUSTAINABLE -->
+                    <div class="feature-card">
+
+                        <div class="feature-icon">🌿</div>
+
+                        <h3>Sustainable Fashion</h3>
+
+                        <p>
+                            Buying pre-loved clothing gives garments a second
+                            life and helps reduce unnecessary clothing waste.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- LEARN MORE BUTTON -->
+                <button type="button" class="learn-btn" id="learnMoreBtn">
+                    Learn More
+                </button>
+
+                <a href="sitemap.html" class="sitemap-btn">Site Map</a>
+                <!-- EXTRA ABOUT INFORMATION -->
+                <div id="aboutMore" class="about-more">
+
+                    <h3>Why Choose Thrift Fashion Store?</h3>
+
+                    <p>
+                        We carefully select pre-loved clothing to provide our
+                        customers with stylish, affordable, and good-quality
+                        fashion pieces.
+                    </p>
+
+                    <p>
+                        Our goal is to make sustainable fashion easy and
+                        accessible while helping reduce clothing waste and
+                        giving clothes a second life.
+                    </p>
+
+                    <p>
+                        Whether you are looking for everyday wear or something
+                        unique, our thrift collection gives you more choices
+                        at affordable prices.
+                    </p>
+
+                    <p>
+                        Shop with us and discover fashion that is better for
+                        your style, your budget, and the environment.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Contact Us Section -->
+    <section class="contact-section" id="contact">
+
+        <div class="contact-container">
+
+            <!-- Contact Information -->
+            <div class="contact-info">
+
+                <h2>Contact Us</h2>
+
+                <p>
+                    Have a question about our products or need any help?
+                    Feel free to contact us. We are always happy to help you.
+                </p>
+
+                <div class="contact-details">
+
+                    <p>
+                        <strong>Email:</strong>
+                        <br>
+                        thrift-fashion-store@gmail.com
+                    </p>
+
+
+                    <p>
+                        <strong>Phone:</strong>
+                        <br>
+                        +92 300 1234567
+                    </p>
+
+                    <p>
+                        <strong>Address:</strong>
+                        <br>
+                        Shahrah-e-Faisal, Karachi, Pakistan
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+
+                <form id="contactForm">
+
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="Enter your phone number" required>
+
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="5" placeholder="Write your message" required></textarea>
+
+                    <button type="submit">Send Message</button>
+
+                </form>
+
+            </div>
+
+
+    </section>
+
+    <!-- Personalization -->
+    <section class="personalization-section" id="nameSection">
+
+        <div class="personalization-box">
+
+            <h2>Welcome to Thrift Fashion Store</h2>
+
+            <p>Enter your first name to continue.</p>
+
+            <input type="text" id="userName" placeholder="Enter your first name">
+
+            <button onclick="welcomeUser()">
+                Continue
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- Welcome Screen -->
+    <section class="welcome-section" id="welcomeSection">
+
+        <div class="welcome-box">
+
+            <h1 id="welcomeText"></h1>
+
+            <p>
+                Welcome to Thrift Fashion Store!
+                Discover unique fashion at affordable prices.
+            </p>
+
+            <button onclick="goToHome()">
+                Start Shopping
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- MAP -->
+    <div class="map-container">
+
+        <div class="map-title">
+            🌍 Visitor World Map
+        </div>
+
+        <div id="map"></div>
+
+    </div>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <!-- BRAND -->
+            <div class="footer-box brand-box">
+
+                <h2>THRIFT</h2>
+
+                <p>
+                    Sustainable fashion<br>
+                    for a better future.
+                </p>
+
+
+
+                <div class="social-icons">
+
+                    <a href="https://www.facebook.com/login/" target="_blank">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+
+                    <a href="https://www.instagram.com/accounts/login/" target="_blank">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+
+                    <a href="https://www.tiktok.com/login" target="_blank">
+                        <i class="bi bi-tiktok"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK LINKS -->
+            <div class="footer-box">
+
+                <h3>QUICK LINKS</h3>
+
+                <ul>
+
+                    <li>
+                        <a href="#home">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="#products">Shop</a>
+                    </li>
+
+                    <li>
+                        <a href="#about">About Us</a>
+                    </li>
+
+                    <li>
+                        <a href="#contact">Contact Us</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- CUSTOMER CARE -->
+            <div class="footer-box">
+
+                <h3>CUSTOMER CARE</h3>
+
+                <ul>
+
+                    <li>
+                        <a href="#contact">My Account</a>
+                    </li>
+
+                    <li>
+                        <a href="cart.html">Cart</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Orders</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Returns</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <!-- NEWSLETTER -->
+            <div class="footer-box newsletter-box">
+
+                <h3>NEWSLETTER</h3>
+
+                <p>
+                    Subscribe for updates
+                </p>
+
+                <form id="newsletterForm">
+
+                    <input type="email" placeholder="Enter your email" required>
+
+                    <button type="submit">
+                        SUBSCRIBE
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- DATE TIME LOCATION -->
+
+    <div class="footer-bottom">
+
+        <div class="footer-info">
+
+            <span>
+                📅
+                <span id="date">
+                    Loading...
+                </span>
+            </span>
+
+
+            <span class="separator">
+                |
+            </span>
+
+
+            <span>
+                🕐
+                <span id="time">
+                    Loading...
+                </span>
+            </span>
+
+
+            <span class="separator">
+                |
+            </span>
+
+
+            <span>
+                📍
+                <span id="location">
+                    Detecting...
+                </span>
+            </span>
+
+
+            <!-- VISITOR COUNT -->
+            <div class="visitor-top">
+                <span>👁️ Visitors:</span>
+                <b id="visitorCount">0</b>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
